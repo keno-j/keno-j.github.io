@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keno Jüchems - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Add styling for hero section */
+        .hero {
+            position: relative;
+            /* color: white; */
+            text-align: center;
+            padding: 40px 20px 100px;
+            min-height: 75px;
+            z-index: 10;
+            margin-bottom: 0px;
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+            width: 100%;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .circular-photo-container {
+            position: absolute;
+            bottom: -75px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+            z-index: 3;
+            background-color: #fff;
+        }
+
+        .circular-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 15px 20px;
+            }
+
+            .circular-photo-container {
+                width: 80px;
+                height: 80px;
+                bottom: -40px;
+            }
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --text-color: #333;
+            --background-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 0;
+        }
+
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+            margin: 0 8px;
+            vertical-align: middle;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 1rem;
+            transition: box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .workplace {
+            font-style: italic;
+            color: #666;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .description {
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .experience-item.expanded .description {
+            display: block;
+        }
+
+        .skills ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0rem;
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-image-container">
+            <img src="images/hero-image.jpg" alt="Hero Background" class="hero-image" />
+        </div>
+        <div class="circular-photo-container">
+            <img src="images/profile.jpeg" alt="Keno Jüchems" class="circular-photo" />
+        </div>
+    </header>
+    
+
+    <div class="cv-container">
+        <header>
+            <h1>Keno Jüchems</h1>
+            <div class="contact-info">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/keno-jüchems-6b08a12" target="_blank" rel="noopener noreferrer">
+                        <img src="images/linkedin.png" alt="LinkedIn Profile"/>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=tereY1oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+                        <img src="images/google_scholar.png" alt="Google Scholar Profile"/>
+                    </a>
+                    <a href="https://kenojuchems.substack.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="images/substack.png" alt="Substack"/>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section id="summary">
+            <h2>About me</h2>
+            <p>I enjoy transforming real-world data into applications that help people.</p>
+            <p>I am currently <b>Lead Machine Learning Scientist</b> at <a href='https://www.limbic.ai/'>Limbic</a>, where I use AI to build psychotherapy for the 21st century.</p>
+            <p>I strongly believe that AI can be a positive transformational force in the world. That's why I devote much of my time to making sure that AI is deployed responsibly and actually helps people improve their wellbeing.</p>
+            <p>Previously, I was an academic in Neuroscience and Experimental Psychology at the University of Oxford. First as a PhD student at Wolfson College, then as a Junior Research Fellow at St John's College. My primary interest was in using Reinforcement Learning to understand how people select and pursue conflicting goals. <a href='https://www.sciencedirect.com/science/article/abs/pii/S1364661319302001'>This paper</a> best summarises my interests.</p>
+            <p>In my spare time I enjoy writing fiction and I am an alumnus of the 7-month Writing a Novel course at <a href="https://faberacademy.com/creative-writing-courses/novel-writing-courses/">Faber Academy.</a></p>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <div class="job-title">
+                        <span class="toggle-icon">▼</span>
+                        <span class="title-text">Lead Machine Learning Scientist</span>
+                    </div>
+                    <div class="workplace">Limbic</div>
+                    <div class="date">April 2024 - present</div>
+                    <div class="description">
+                        <p>
+                            I lead a team within the Research Team in building AI-enabled psychological therapy.
+                        </p>
+                        <p>
+                            This includes building and deploying ML models at scale.
+                        </p>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">
+                        <span class="toggle-icon">▼</span>
+                        <span class="title-text">Machine Learning Scientist</span>
+                    </div>
+                    <div class="workplace">Limbic</div>
+                    <div class="date">July 2022 - March 2024</div>
+                    <div class="description">I built AI tools that support mental health patients.</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">
+                        <span class="toggle-icon">▼</span>
+                        <span class="title-text">Junior Research Fellow</span>
+                    </div>
+                    <div class="workplace">St John's College (University of Oxford)</div>
+                    <div class="date">October 2019 - August 2022</div>
+                    <div class="description">I used Deep RL techniques and neuroimaging to understand how people make decisions across economic tests, psychological tasks, and simple video games.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <div class="job-title">
+                        <span class="toggle-icon">▼</span>
+                        <span class="title-text">PhD in Experimental Psychology</span>
+                    </div>
+                    <div class="workplace">University of Oxford</div>
+                    <div class="date">October 2015 - September 2019</div>
+                    <div class="description">DPhil (PhD) in Experimental Psychology / Neuroscience</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">
+                        <span class="toggle-icon">▼</span>
+                        <span class="title-text">MSc in Cognitive Science</span>
+                    </div>
+                    <div class="workplace">University of Osnabrück (Germany)</div>
+                    <div class="date">October 2012 - September 2015</div>
+                    <div class="description">MSc Cog Sci</div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">
+                        <span class="toggle-icon">▼</span>
+                        <span class="title-text">BSc in Psychology</span>
+                    </div>
+                    <div class="workplace">University of Hamburg (Germany)</div>
+                    <div class="date">October 2008 - September 2011</div>
+                    <div class="description">BSc Psychology</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Tools I use</h2>
+            <ul>
+                <li>Python, C#, Node.js, SQL</li>
+                <li>PyTorch, JAX</li>
+                <li>Reinforcement Learning, Large Language Models (finetuning), NLP</li>
+                <li>Scikit-learn, XGBoost, Pandas, Streamlit</li>
+                <li>Git, GitHub</li>
+                <li>MongoDB, PostgreSQL</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Show descriptions by default for first items in each section
+        document.querySelector('#experience .experience-item').classList.add('expanded');
+        document.querySelector('#education .experience-item').classList.add('expanded');
+
+        // Add click toggle functionality
+        document.querySelectorAll('.experience-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                item.classList.toggle('expanded');
+            });
+        });
+    </script>
+</body>
+</html>
