@@ -137,7 +137,7 @@
         }
 
         .experience-grid {
-            display: grid;
+            display: list-item;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1rem;
             margin-top: 1rem;
@@ -149,6 +149,7 @@
             padding: 1rem;
             transition: box-shadow 0.3s ease;
             cursor: pointer;
+            margin-bottom: 1rem;
         }
 
         .experience-item:hover {
@@ -250,6 +251,7 @@
             <p>I enjoy transforming real-world data into applications that help people.</p>
             <p>I am currently <b>Lead Machine Learning Scientist</b> at <a href='https://www.limbic.ai/' target="_blank" rel="noopener noreferrer">Limbic</a>, where I use AI to build psychotherapy for the 21st century.</p>
             <p>I strongly believe that AI can be a positive transformational force in the world. That's why I devote much of my time to making sure that AI is deployed responsibly and actually helps people improve their wellbeing.</p>
+            <p>AI should be accessible to all. Given the recent advances in open source models, I feel optimistic that this is achievable. </p>
             <p>Previously, I was an academic in Neuroscience and Experimental Psychology at the University of Oxford. First as a PhD student at Wolfson College, then as a Junior Research Fellow at St John's College. My primary interest was in using Reinforcement Learning to understand how people select and pursue conflicting goals. <a href='https://www.sciencedirect.com/science/article/abs/pii/S1364661319302001' target="_blank" rel="noopener noreferrer">This paper</a> best summarises my interests.</p>
             <p>In my spare time I enjoy writing fiction and I am an alumnus of the 7-month Writing a Novel course at <a href="https://faberacademy.com/creative-writing-courses/novel-writing-courses/" target="_blank" rel="noopener noreferrer">Faber Academy.</a></p>
         </section>
@@ -265,12 +267,8 @@
                     <div class="workplace">Limbic</div>
                     <div class="date">April 2024 - present</div>
                     <div class="description">
-                        <p>
-                            I lead a team within the Research Team in building AI-enabled psychological therapy.
-                        </p>
-                        <p>
-                            This includes building and deploying ML models at scale.
-                        </p>
+                        <p>I lead a team within the AI & Research Team in building AI-enabled psychological therapy.</p>
+                        <p>This includes finetuning LLMs, building ML models capable of taking on clinical tasks, and enhancing model safeguards.</p>
                     </div>
                 </div>
                 <div class="experience-item">
@@ -280,7 +278,12 @@
                     </div>
                     <div class="workplace">Limbic</div>
                     <div class="date">July 2022 - March 2024</div>
-                    <div class="description">I built AI tools that support mental health patients.</div>
+                    <div class="description">
+                        <p>After my postdoc, I was longing for a more applied role and jumped at the opportunity of joining the AI & Research Team as their first ML Scientist.</p>
+                        <p>I built AI tools that support mental health patients.</p>
+                        <p>I spearheaded Limbic's deployment of LLM features by finetuning GPT-3</p>
+                        <p>I was in charge of Limbic's patent portfolio.</p>
+                    </div>
                 </div>
                 <div class="experience-item">
                     <div class="job-title">
@@ -289,7 +292,11 @@
                     </div>
                     <div class="workplace">St John's College (University of Oxford)</div>
                     <div class="date">October 2019 - August 2022</div>
-                    <div class="description">I used Deep RL techniques and neuroimaging to understand how people make decisions across economic tests, psychological tasks, and simple video games.</div>
+                    <div class="description">
+                        <p>I held a highly competitive (~1-in-200 odds) Junior Research Fellowship.</p>
+                        <p>I used Deep RL techniques, primarily meta-RL, and neuroimaging to understand how people make decisions across economic tests, psychological tasks, and simple video games which I coded in Unity.</p>
+                        <p>I worked across the groups of Chris Summerfield (Experimental Psychology) and Laurence Hunt (Psychiatry)</p> 
+                    </div>
                 </div>
             </div>
         </section>
@@ -304,7 +311,13 @@
                     </div>
                     <div class="workplace">University of Oxford</div>
                     <div class="date">October 2015 - September 2019</div>
-                    <div class="description">DPhil (PhD) in Experimental Psychology / Neuroscience</div>
+                    <div class="description">
+                        <p>DPhil (PhD) in Experimental Psychology / Neuroscience</p>
+                        <p>I investigated how the ventromedial prefrontal cortex enables people to make decisions over long time horizons and across competing goals.</p>
+                        <p>Supervised by Chris Summerfield, co-supervised by Jill O'Reilly</p>
+                        <p>Funded by an Advanced Quantitative Methods grant from the ESRC (value ~£75,000 over 3.5 years)</p>
+                        <p>Short reasearch visit to Nathaniel Daw's group at Princeton University</p>
+                    </div>
                 </div>
                 <div class="experience-item">
                     <div class="job-title">
@@ -313,7 +326,10 @@
                     </div>
                     <div class="workplace">University of Osnabrück (Germany)</div>
                     <div class="date">October 2012 - September 2015</div>
-                    <div class="description">MSc Cog Sci</div>
+                    <div class="description">
+                        <p>I completed an MSc in Cognitive Science to deepen my technical skills and to pursue a career in research.</p>
+                        <p>During this time, I completed two six-month ERASMUS-funded internships at the University of Oxford. One with Chris Summerfield in Experimental Psychology, another with Anke Ehlers at the Oxford Centre for Anxiety Disorders and Trauma.</p>
+                    </div>
                 </div>
                 <div class="experience-item">
                     <div class="job-title">
@@ -322,7 +338,10 @@
                     </div>
                     <div class="workplace">University of Hamburg (Germany)</div>
                     <div class="date">October 2008 - September 2011</div>
-                    <div class="description">BSc Psychology</div>
+                    <div class="description">
+                        <p>BSc degree in Psychology</p>
+                        <p>Aside from course work, I was employed by the Media Psychology group led by Sabine Trepte. This led to my first publication in 2012.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -330,9 +349,9 @@
         <section id="skills" class="skills">
             <h2>Tools I use</h2>
             <ul>
-                <li>Python, C#, Node.js, SQL</li>
+                <li>Python, C#, SQL</li>
                 <li>PyTorch, JAX</li>
-                <li>Reinforcement Learning, Large Language Models (finetuning), NLP</li>
+                <li>RL, LLMs (finetuning), NLP</li>
                 <li>Scikit-learn, XGBoost, Pandas, Streamlit</li>
                 <li>Git, GitHub</li>
                 <li>MongoDB, PostgreSQL</li>
@@ -342,7 +361,7 @@
     </div>
 
     <footer>
-        <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license.</p>
+        <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC-ND 4.0</a> license.</p>
     </footer>
 
     <script>
