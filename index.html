@@ -373,7 +373,19 @@
         document.querySelectorAll('.experience-item').forEach(item => {
             item.addEventListener('click', (e) => {
                 item.classList.toggle('expanded');
+                
+                // Find and update the toggle icon within this item
+                const toggleIcon = item.querySelector('.toggle-icon');
+                if (toggleIcon) {
+                    toggleIcon.textContent = item.classList.contains('expanded') ? '▼' : '▶';
+                }
             });
+        });
+
+        // Set initial triangle states
+        document.querySelectorAll('.toggle-icon').forEach(icon => {
+            const isExpanded = icon.closest('.experience-item').classList.contains('expanded');
+            icon.textContent = isExpanded ? '▼' : '▶';
         });
     </script>
 </body>
