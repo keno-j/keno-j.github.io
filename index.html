@@ -1,213 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keno Jüchems - CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keno Jüchems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #111417;
+  --surface: #181c20;
+  --raise: #1f2429;
+  --ink: #eceae6;
+  --muted: #a3a8ad;
+  --faint: #6c7378;
+  --line: #2a3036;
+  --accent: #d8b77f;
+  --accent-soft: rgba(216,183,127,.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--bg); color: var(--ink); line-height: 1.7; font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: var(--bg); }
+a { color: var(--accent); text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-size: 0 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .3s ease; }
+a:hover { background-size: 100% 1px; }
+
+/* Hero */
+.hero { position: relative; height: 58vh; min-height: 380px; max-height: 560px; overflow: hidden; }
+.hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: saturate(.7) brightness(.75); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,20,23,.15) 0%, rgba(17,20,23,.55) 55%, var(--bg) 100%); }
+.hero-content {
+  position: absolute; z-index: 1; left: 0; right: 0; bottom: 36px;
+  max-width: 880px; margin: 0 auto; padding: 0 24px; display: flex; align-items: flex-end; gap: 28px;
+}
+.avatar { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; border: 3px solid var(--bg); box-shadow: 0 10px 30px rgba(0,0,0,.4); flex: none; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; }
+.sub { color: var(--muted); font-size: 1.05rem; margin-top: 6px; }
+.sub b { color: var(--accent); font-weight: 700; }
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 24px 24px 64px; }
+
+.links { display: flex; gap: 10px; margin-bottom: 40px; }
+.links a { background: none; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: .88rem; transition: border-color .2s, background .2s; }
+.links a:hover { border-color: var(--accent); background: var(--accent-soft); }
+.links img { width: 16px; height: 16px; filter: brightness(0) invert(.9); }
+
+/* Intro box */
+.intro { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; margin-bottom: 72px; }
+.intro .lede { padding: 36px; font-size: 1.4rem; font-weight: 300; line-height: 1.5; background: var(--surface); }
+.intro .lede b { color: var(--accent); font-weight: 700; }
+.intro ol { list-style: none; padding: 28px 32px; background: var(--raise); display: grid; gap: 16px; align-content: center; }
+.intro li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; font-size: .95rem; line-height: 1.45; }
+.intro li span { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); font-weight: 700; padding-top: 3px; }
+
+/* Sections */
+section { margin-bottom: 72px; }
+.sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px; }
+h2 { font-size: 1.5rem; font-weight: 300; letter-spacing: -0.01em; }
+.sec-head .num { font-size: .78rem; color: var(--accent); font-weight: 700; letter-spacing: .1em; }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; }
+.about p { color: #c9cbcd; margin-bottom: 16px; font-size: .98rem; }
+
+/* Year-column accordions */
+.rows { border-top: 1px solid var(--line); }
+.row { border-bottom: 1px solid var(--line); }
+.row-head {
+  all: unset; box-sizing: border-box; cursor: pointer; width: 100%;
+  display: grid; grid-template-columns: 130px 1fr 28px; gap: 20px; align-items: baseline; padding: 22px 4px;
+  transition: background .2s;
+}
+.row-head:hover { background: linear-gradient(90deg, var(--accent-soft), transparent 70%); }
+.row-head:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.yr { color: var(--faint); font-size: .88rem; font-variant-numeric: tabular-nums; transition: color .2s; }
+.row.open .yr, .row-head:hover .yr { color: var(--accent); }
+.ttl { font-weight: 700; font-size: 1.08rem; }
+.org { display: block; color: var(--muted); font-size: .95rem; font-weight: 400; }
+.arrow { width: 22px; height: 22px; align-self: center; color: var(--faint); transition: transform .35s ease, color .2s; }
+.row.open .arrow { transform: rotate(45deg); color: var(--accent); }
+.row-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s ease; }
+.row.open .row-body { grid-template-rows: 1fr; }
+.row-body > div { overflow: hidden; }
+.row-body ul { list-style: none; padding: 0 52px 24px 154px; color: #c4c7ca; font-size: .96rem; }
+.row-body li { margin-bottom: 8px; padding-left: 16px; position: relative; }
+.row-body li::before { content: "–"; position: absolute; left: 0; color: var(--accent); }
+
+/* Skills */
+.skill-groups { display: grid; gap: 26px; }
+.skill-group { display: grid; grid-template-columns: 130px 1fr; gap: 20px; align-items: start; }
+.skill-group h3 { font-size: .88rem; font-weight: 400; color: var(--faint); padding-top: 9px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 9px; padding: 8px 16px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+  font-size: .9rem; color: var(--ink); transition: background .25s, border-color .25s, color .25s, transform .25s;
+}
+.chip img { height: 20px; width: auto; max-width: 34px; filter: brightness(0) invert(.82); transition: filter .25s; }
+.chip:hover { background: #f4f1ea; border-color: #f4f1ea; color: #111417; transform: translateY(-2px); }
+.chip:hover img { filter: none; }
+.chip.text { color: var(--muted); }
+.chip.text:hover { color: #111417; }
+
+footer { text-align: center; color: var(--faint); font-size: .85rem; padding: 32px 24px; border-top: 1px solid var(--line); }
+
+@media (max-width: 760px) {
+  .hero { height: 46vh; min-height: 320px; }
+  .hero-content { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .avatar { width: 92px; height: 92px; }
+  .intro { grid-template-columns: 1fr; }
+  .intro .lede { padding: 26px 22px; font-size: 1.2rem; }
+  .intro ol { padding: 22px; }
+  .about { grid-template-columns: 1fr; }
+  .row-head { grid-template-columns: 1fr 24px; gap: 4px 12px; }
+  .yr { grid-row: 2; grid-column: 1; }
+  .ttl { grid-row: 1; }
+  .arrow { grid-row: 1 / span 2; grid-column: 2; }
+  .row-body ul { padding: 0 8px 20px 4px; }
+  .skill-group { grid-template-columns: 1fr; gap: 10px; }
+  .skill-group h3 { padding-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-image-container">
-            <img src="images/hero-image.jpg" alt="Hero Background" class="hero-image" />
-        </div>
-        <div class="circular-photo-container">
-            <img src="images/profile.jpeg" alt="Keno Jüchems" class="circular-photo" />
-        </div>
-    </header>
-    
 
-    <div class="cv-container">
-        <header>
-            <h1>Keno Jüchems</h1>
-            <div class="contact-info">
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/keno-jüchems-6b08a12" target="_blank" rel="me noopener noreferrer">
-                        <img src="images/linkedin.png" alt="LinkedIn Profile"/>
-                    </a>
-                    <a href="https://scholar.google.com/citations?user=tereY1oAAAAJ&hl=en" target="_blank" rel="me noopener noreferrer">
-                        <img src="images/google_scholar.png" alt="Google Scholar Profile"/>
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <section id="summary">
-            <h2>About me</h2>
-            <p>I am passionate about turning AI into a positive force for society.</p>
-            <p>I am currently building a non-profit startup at the intersection of AI safety and cooperative governance of AI.</p>
-            <p>Most recently, I was <b>Engineering Lead</b> within the Human Influence Team at the <a href='https://www.aisi.gov.uk/' target="_blank" rel="noopener noreferrer">AI Security Institute</a>, where I led a team building research automation tools to study the societal impacts of AI at scale. Immediately before this, as an RE, I studied the effects of AI on humans over long time horizons, for example in therapeutic or advice-giving settings. This <a href="https://osf.io/preprints/psyarxiv/67eqx_v3" target="_blank" rel="noopener noreferrer">recent preprint</a> showcases the team's focus areas. </p>
-            <p>I strongly believe that AI can be a positive transformational force in the world. That's why I devote much of my time to making sure that AI is safe and beneficial to its users.</p>
-            <p>Before joining AISI, I was Lead ML Scientist at the mental health startup <a href='https://www.limbic.ai/' target="_blank" rel="noopener noreferrer">Limbic</a>. This <a href="https://www.nature.com/articles/s41591-026-04278-w" target="_blank" rel="noopener noreferrer">Nature Medicine paper</a> showcases some of my work during this time.</p>
-            <p>Previously, I was an academic in Neuroscience and Experimental Psychology at the University of Oxford. First as a PhD student at Wolfson College, then as a Junior Research Fellow at St John's College. My primary interest was in using Deep Reinforcement Learning to understand how people select and pursue conflicting goals. <a href='https://www.sciencedirect.com/science/article/abs/pii/S1364661319302001' target="_blank" rel="noopener noreferrer">This paper</a> best summarises my interests at the time.</p>
-            <p>In my spare time I enjoy writing fiction and I am an alumnus of the 7-month Writing a Novel course at <a href="https://faberacademy.com/creative-writing-courses/novel-writing-courses/" target="_blank" rel="noopener noreferrer">Faber Academy.</a></p>
-        </section>
-
-        <section id="experience">
-            <h2>Professional Experience</h2>
-            <div class="experience-grid">
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">Co-founder</span>
-                    </div>
-                    <div class="workplace">Startup in stealth</div>
-                    <div class="date">Nov 2026 - present</div>
-                    <div class="description">
-                        <p>Building a non-profit startup at the intersection of AI safety and cooperative governance of AI.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">Engineering Lead</span>
-                    </div>
-                    <div class="workplace">AI Security Institute</div>
-                    <div class="date">June 2026 - Nov 2026</div>
-                    <div class="description">
-                        <p>I led the establishment of the engineering team to build research automation tools to study the societal impacts of AI at scale.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">Research Engineer</span>
-                    </div>
-                    <div class="workplace">AI Security Institute</div>
-                    <div class="date">September 2025 - June 2026</div>
-                    <div class="description">
-                        <p>I worked within the Societal Impacts Team to study the effects of AI on people and society.</p>
-                        <p>This included training and finetuning 100B+ parameter models, running longitudinal RCTs, and developing evaluations for model safety.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">Lead Machine Learning Scientist</span>
-                    </div>
-                    <div class="workplace">Limbic</div>
-                    <div class="date">April 2024 - April 2025</div>
-                    <div class="description">
-                        <p>I led a team within the AI & Research Team in building AI-enabled psychological therapy.</p>
-                        <p>This includes finetuning LLMs, building ML models capable of taking on clinical tasks, and enhancing model safeguards.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">Machine Learning Scientist</span>
-                    </div>
-                    <div class="workplace">Limbic</div>
-                    <div class="date">July 2022 - March 2024</div>
-                    <div class="description">
-                        <p>I joined the AI & Research Team as their first ML Scientist to build AI tools that support mental health patients.</p>
-                        <p>I spearheaded Limbic's deployment of LLM features by finetuning GPT-3 (and above)</p>
-                        <p>I was also in charge of Limbic's patent portfolio, handling more than 10 patent applications and grants across the EU, US, and overseas.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">Junior Research Fellow</span>
-                    </div>
-                    <div class="workplace">St John's College (University of Oxford)</div>
-                    <div class="date">October 2019 - August 2022</div>
-                    <div class="description">
-                        <p>I held a highly competitive (~1-in-200 odds) Junior Research Fellowship.</p>
-                        <p>I used Deep RL techniques, primarily meta-RL, and neuroimaging to understand how people make decisions across economic tests, psychological tasks, and video games which I coded in Unity.</p>
-                        <p>I worked across the groups of Chris Summerfield (Experimental Psychology) and Laurence Hunt (Psychiatry)</p> 
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-            <div class="experience-grid">
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">PhD in Experimental Psychology</span>
-                    </div>
-                    <div class="workplace">University of Oxford</div>
-                    <div class="date">October 2015 - September 2019</div>
-                    <div class="description">
-                        <p>DPhil (PhD) in Experimental Psychology / Neuroscience</p>
-                        <p>I investigated how the ventromedial prefrontal cortex enables people to make decisions over long time horizons and across competing goals.</p>
-                        <p>Supervised by Chris Summerfield, co-supervised by Jill O'Reilly</p>
-                        <p>Funded by an Advanced Quantitative Methods grant from the ESRC (value ~£75,000 over 3.5 years)</p>
-                        <p>3-month research visit to Nathaniel Daw's group at Princeton University</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">MSc in Cognitive Science</span>
-                    </div>
-                    <div class="workplace">University of Osnabrück (Germany)</div>
-                    <div class="date">October 2012 - September 2015</div>
-                    <div class="description">
-                        <p>I completed an MSc in Cognitive Science to deepen my technical skills and to pursue a career in research.</p>
-                        <p>During this time, I completed two six-month ERASMUS-funded internships at the University of Oxford. One with Chris Summerfield in Experimental Psychology, another with Anke Ehlers at the Oxford Centre for Anxiety Disorders and Trauma.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="job-title">
-                        <span class="toggle-icon">▼</span>
-                        <span class="title-text">BSc in Psychology</span>
-                    </div>
-                    <div class="workplace">University of Hamburg (Germany)</div>
-                    <div class="date">October 2008 - September 2011</div>
-                    <div class="description">
-                        <p>BSc degree in Psychology</p>
-                        <p>Aside from course work, I was employed by the Media Psychology group led by Sabine Trepte. This led to my first publication in 2012.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="skills">
-            <h2>Tools I use</h2>
-            <ul>
-                <li>Python, SQL, Node.JS</li>
-                <li>HPC clusters, Slurm, NCCL, K8s</li>
-                <li>PyTorch, JAX, accelerate, Ray</li>
-                <li>Post-training: SFT, RLHF, DPO</li>
-                <li>AWS, Doppler, Git</li>
-                <li>MongoDB, PostgreSQL</li>
-            </ul>
-        </section>
-
+<header class="hero">
+  <img class="bg" src="images/hero-image.jpg" alt="">
+  <div class="hero-content">
+    <img class="avatar" src="images/profile.jpeg" alt="Keno Jüchems">
+    <div>
+      <h1>Keno Jüchems</h1>
+      <p class="sub"><b>AI Engineering Lead</b> &amp; researcher · Co-founder</p>
     </div>
+  </div>
+</header>
 
-    <footer>
-        <p style="text-align: center">© Keno Jüchems, 2026 - All rights reserved</p>
-    </footer>
+<div class="wrap">
+  <nav class="links">
+    <a href="https://www.linkedin.com/in/keno-jüchems-6b08a12" target="_blank" rel="me noopener noreferrer"><img src="images/icons/linkedin.svg" alt="">LinkedIn</a>
+    <a href="https://scholar.google.com/citations?user=tereY1oAAAAJ&hl=en" target="_blank" rel="me noopener noreferrer"><img src="images/icons/googlescholar.svg" alt="">Scholar</a>
+  </nav>
 
-    <script>
-        // Show descriptions by default for first items in each section
-        document.querySelector('#experience .experience-item').classList.add('expanded');
-        document.querySelector('#education .experience-item').classList.add('expanded');
+  <div class="intro">
+    <p class="lede">I work on making AI a <b>positive force for society</b>, building the engineering and governance mechanisms to ensure AI is safe, fair, and beneficial.</p>
+    <ol>
+      <li><span>Now</span>Co-founding a non-profit for AI safety &amp; cooperative AI governance</li>
+      <li><span>Recently</span>Engineering Lead, UK AI Security Institute</li>
+      <li><span>Earlier</span>Lead ML Scientist, Limbic · Oxford PhD &amp; JRF</li>
+    </ol>
+  </div>
 
-        // Add click toggle functionality
-        document.querySelectorAll('.experience-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                item.classList.toggle('expanded');
-                
-                // Find and update the toggle icon within this item
-                const toggleIcon = item.querySelector('.toggle-icon');
-                if (toggleIcon) {
-                    toggleIcon.textContent = item.classList.contains('expanded') ? '▼' : '▶';
-                }
-            });
-        });
+  <section>
+    <div class="sec-head"><span class="num">01</span><h2>About</h2></div>
+    <div class="about">
+      <div>
+        <p>Most recently I was <b>Engineering Lead</b> in the Human Influence Team at the <a href="https://www.aisi.gov.uk/" target="_blank" rel="noopener noreferrer">AI Security Institute</a>, leading a team building research-automation tools to study the societal impacts of AI at scale. Before that, as a Research Engineer, I studied the effects of AI on people over long time horizons, for example in therapeutic or advice-giving settings (<a href="https://osf.io/preprints/psyarxiv/67eqx_v3" target="_blank" rel="noopener noreferrer">recent preprint summarising the group's interests</a>).</p>
+        <p>Before AISI, I was Lead ML Scientist at the mental health startup <a href="https://www.limbic.ai/" target="_blank" rel="noopener noreferrer">Limbic</a>; this <a href="https://www.nature.com/articles/s41591-026-04278-w" target="_blank" rel="noopener noreferrer">Nature Medicine paper</a> showcases some of my work.</p>
+      </div>
+      <div>
+        <p>Earlier, I was an academic in neuroscience and experimental psychology at Oxford, using deep reinforcement learning and neuroimaging to understand how people select and pursue conflicting goals. <a href="https://www.sciencedirect.com/science/article/abs/pii/S1364661319302001" target="_blank" rel="noopener noreferrer">This paper</a> best summarises my interests during that time.</p>
+        <p>In my spare time I enjoy writing fiction, and I am a writer-alumnus of the <a href="https://faberacademy.com/creative-writing-courses/novel-writing-courses/" target="_blank" rel="noopener noreferrer">Faber Academy</a>.</p>
+      </div>
+    </div>
+  </section>
 
-        // Set initial triangle states
-        document.querySelectorAll('.toggle-icon').forEach(icon => {
-            const isExpanded = icon.closest('.experience-item').classList.contains('expanded');
-            icon.textContent = isExpanded ? '▼' : '▶';
-        });
-    </script>
+  <section>
+    <div class="sec-head"><span class="num">02</span><h2>Experience</h2></div>
+    <div class="rows">
+      <div class="row open">
+        <button class="row-head" aria-expanded="true"><span class="yr">2026 – now</span><span class="ttl">Co-founder<span class="org">Startup in stealth</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>Building a non-profit at the intersection of AI safety and cooperative governance of AI.</li>
+        </ul></div></div>
+      </div>
+      <div class="row">
+        <button class="row-head" aria-expanded="false"><span class="yr">2026</span><span class="ttl">Engineering Lead<span class="org">AI Security Institute</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>Established the engineering team building research-automation tools to study the societal impacts of AI at scale.</li>
+        </ul></div></div>
+      </div>
+      <div class="row">
+        <button class="row-head" aria-expanded="false"><span class="yr">2025 – 2026</span><span class="ttl">Research Engineer<span class="org">AI Security Institute</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>Studied the effects of AI on people and society within the Societal Impacts Team.</li>
+          <li>Trained and fine-tuned 100B+ parameter models, ran longitudinal RCTs, and developed evaluations for model safety.</li>
+        </ul></div></div>
+      </div>
+      <div class="row">
+        <button class="row-head" aria-expanded="false"><span class="yr">2024 – 2025</span><span class="ttl">Lead Machine Learning Scientist<span class="org">Limbic</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>Led a team within AI &amp; Research building AI-enabled psychological therapy.</li>
+          <li>Fine-tuned LLMs, built ML models for clinical tasks, and pioneered our model safety evaluations and safeguards.</li>
+        </ul></div></div>
+      </div>
+      <div class="row">
+        <button class="row-head" aria-expanded="false"><span class="yr">2022 – 2024</span><span class="ttl">Machine Learning Scientist<span class="org">Limbic</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>First ML Scientist on the AI &amp; Research Team, building AI tools that support mental health patients.</li>
+          <li>Spearheaded Limbic's deployment of LLM features by fine-tuning GPT-3 and later models.</li>
+          <li>Managed the patent portfolio: 10+ applications and grants across the EU, US and overseas.</li>
+        </ul></div></div>
+      </div>
+      <div class="row">
+        <button class="row-head" aria-expanded="false"><span class="yr">2019 – 2022</span><span class="ttl">Junior Research Fellow<span class="org">St John's College, University of Oxford</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>Highly competitive (~1-in-200) Junior Research Fellowship.</li>
+          <li>Used deep RL (primarily meta-RL) and neuroimaging to study decision-making across economic tests, psychological tasks, and video games I built in Unity (C#).</li>
+          <li>Worked across the groups of Chris Summerfield (Experimental Psychology) and Laurence Hunt (Psychiatry).</li>
+        </ul></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">03</span><h2>Education</h2></div>
+    <div class="rows">
+      <div class="row">
+        <button class="row-head" aria-expanded="false"><span class="yr">2015 – 2019</span><span class="ttl">DPhil (PhD) in Experimental Psychology<span class="org">University of Oxford</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>Investigated how the ventromedial prefrontal cortex enables decisions over long time horizons and across competing goals.</li>
+          <li>Supervised by Chris Summerfield, co-supervised by Jill O'Reilly.</li>
+          <li>Funded by an ESRC Advanced Quantitative Methods grant (~£75,000 over 3.5 years).</li>
+          <li>3-month research visit to Nathaniel Daw's group at Princeton University.</li>
+        </ul></div></div>
+      </div>
+      <div class="row">
+        <button class="row-head" aria-expanded="false"><span class="yr">2012 – 2015</span><span class="ttl">MSc in Cognitive Science<span class="org">University of Osnabrück, Germany</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>Two six-month ERASMUS-funded internships at Oxford: with Chris Summerfield (Experimental Psychology) and Anke Ehlers (Oxford Centre for Anxiety Disorders and Trauma).</li>
+        </ul></div></div>
+      </div>
+      <div class="row">
+        <button class="row-head" aria-expanded="false"><span class="yr">2008 – 2011</span><span class="ttl">BSc in Psychology<span class="org">University of Hamburg, Germany</span></span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="row-body"><div><ul>
+          <li>Worked in Sabine Trepte's Media Psychology group alongside coursework, leading to my first publication in 2012.</li>
+        </ul></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">04</span><h2>Tools I use</h2></div>
+    <div class="skill-groups">
+      <div class="skill-group"><h3>Languages &amp; data</h3><div class="chips">
+        <span class="chip"><img src="images/icons/python.svg" alt="">Python</span>
+        <span class="chip"><img src="images/icons/nodejs.svg" alt="">Node.js</span>
+        <span class="chip"><img src="images/icons/postgresql.svg" alt="">PostgreSQL</span>
+        <span class="chip"><img src="images/icons/mongodb.svg" alt="">MongoDB</span>
+        <span class="chip text">SQL</span>
+      </div></div>
+      <div class="skill-group"><h3>Machine learning</h3><div class="chips">
+        <span class="chip"><img src="images/icons/pytorch.svg" alt="">PyTorch</span>
+        <span class="chip"><img src="images/icons/jax.svg" alt="">JAX</span>
+        <span class="chip"><img src="images/icons/huggingface.svg" alt="">Accelerate</span>
+        <span class="chip"><img src="images/icons/ray.svg" alt="">Ray</span>
+        <span class="chip text">SFT · RLHF · DPO</span>
+      </div></div>
+      <div class="skill-group"><h3>Infrastructure</h3><div class="chips">
+        <span class="chip"><img src="images/icons/kubernetes.svg" alt="">Kubernetes</span>
+        <span class="chip text">AWS</span>
+        <span class="chip text">NCCL</span>
+        <span class="chip text">Git</span>
+        <span class="chip text">HPC · Slurm</span>
+        <span class="chip text">Doppler</span>
+      </div></div>
+    </div>
+  </section>
+</div>
+
+<footer>© Keno Jüchems, 2026</footer>
+
+<script>
+document.querySelectorAll('.row').forEach(row => {
+  const head = row.querySelector('.row-head');
+  head.addEventListener('click', () => {
+    const open = row.classList.toggle('open');
+    head.setAttribute('aria-expanded', open);
+  });
+});
+</script>
 </body>
 </html>
